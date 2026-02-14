@@ -1786,6 +1786,7 @@ void Celeste_P8_update() {
 		if (start_game) {
 			start_game_flash-=1;
 			if (start_game_flash<=-30) {
+				begin_game();
 				if (gameState) {
 					is_not_title=true;
 			        if (pauseEmu) { pauseEmu = false; }
@@ -1793,7 +1794,6 @@ void Celeste_P8_update() {
 		        } /*else {
 					OSDset("Nouvelle Sauvegarde"); 
 			    }*/
-				begin_game();
 			}
 		}
 	}
