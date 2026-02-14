@@ -17,6 +17,7 @@ uint16_t lastEmuBtnState = 0;
 typedef struct {int x,y;} VECI;
 extern VECI room;
 extern bool is_not_title;
+extern bool has_dashed;
 
 // Input related variables :
 EADK::Keyboard::State state = 0;
@@ -448,6 +449,7 @@ void emuInput() {
 		gameState = gameState ? gameState : malloc(Celeste_P8_get_state_size());
 		if (gameState) {
 			OSDset("Sauvegarde Enregistre");
+			has_dashed=false;
 			Celeste_P8_save_state(gameState);
 			writeProgressSave();
 		}
@@ -458,6 +460,7 @@ void emuInput() {
 		if (gameState) {
 			OSDset("Sauvegarde Restaure");
 			if (pauseEmu) { pauseEmu = false; }
+	        has_dashed=false;
 			Celeste_P8_load_state(gameState);
 		} else { OSDset("Aucune Sauvegarde"); }
 	}
@@ -488,6 +491,7 @@ void checkAndSaveOnRoomChange() {
         gameState = gameState ? gameState : malloc(Celeste_P8_get_state_size());
         if (gameState) {
             if (is_not_title) {
+				has_dashed=false;
                 Celeste_P8_save_state(gameState);
                 writeProgressSave();
                 OSDset("Salle Sauvegarde");
