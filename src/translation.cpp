@@ -14,6 +14,8 @@ bool screenShake = true;
 bool pauseEmu = false;
 uint16_t emuBtnState = 0;
 uint16_t lastEmuBtnState = 0;
+
+typedef struct {int x,y;} VECI;
 extern VECI room;
 
 // Input related variables :
