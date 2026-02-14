@@ -424,7 +424,7 @@ void emuInput() {
 
 	if (state.keyDown(Keyboard::Key::Toolbox)
         && !lastState.keyDown(Keyboard::Key::Toolbox))
-		{ screenShake = !screenShake; OSDset("Vibration de l'écran: %s", screenShake ? "on" : "off"); }
+		{ screenShake = !screenShake; OSDset("Vibration de l'ecran: %s", screenShake ? "on" : "off"); }
 	
 	static uint8_t resetTimer = 0;
 	if (state.keyDown(Keyboard::Key::XNT)) {
@@ -432,7 +432,7 @@ void emuInput() {
 		if (resetTimer >= 30) {
 			resetTimer = 0;
 			
-			OSDset("Réinitialisation");
+			OSDset("Reinitialisation");
 			pauseEmu = false;
 			
 			gameInit();
@@ -443,7 +443,7 @@ void emuInput() {
         && !lastState.keyDown(Keyboard::Key::Shift)) {
 		gameState = gameState ? gameState : malloc(Celeste_P8_get_state_size());
 		if (gameState) {
-			OSDset("Sauvegarde Enregistré");
+			OSDset("Sauvegarde Enregistre");
 			Celeste_P8_save_state(gameState);
 			writeProgressSave();
 		}
@@ -452,7 +452,7 @@ void emuInput() {
 	if (state.keyDown(Keyboard::Key::Alpha)
         && !lastState.keyDown(Keyboard::Key::Alpha)) {
 		if (gameState) {
-			OSDset("Sauvegarde Restauré");
+			OSDset("Sauvegarde Restaure");
 			if (pauseEmu) { pauseEmu = false; }
 			Celeste_P8_load_state(gameState);
 		} else { OSDset("Aucune Sauvegarde"); }
@@ -485,7 +485,7 @@ void gameMain() {
 
 		emuRectFill(x - 1, y - 1, 6 * 4 + x + 1, 6 + y + 1, 6);
 		emuRectFill(x, y, 6 * 4 + x, 6 + y, 0);
-		emuPrint("paused", x + 1, y + 1, 7);
+		emuPrint("En pause", x + 1, y + 1, 7);
 	} else {
 
 		Celeste_P8_update();
