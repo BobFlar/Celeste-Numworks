@@ -1918,10 +1918,11 @@ void Celeste_P8_draw() {
    
 	// credits
 	if (is_title()) {
-		P8print("OK+BACK",50,80,5);
-		P8print("Nohan",42,96,5);
-		P8print("Fils de pute",46,102,5);
-	}
+        P8print("OK+BACK",      50, 82, 5);
+        P8print("Nohan",        42, 90, 5);
+        P8print("Fils de pute", 46, 98, 5);
+    }
+
    
 	if (level_index()==30) {
 		OBJ* p = NULL;
