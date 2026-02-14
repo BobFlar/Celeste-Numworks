@@ -28,6 +28,8 @@ int main(void) {
     Point location = Point(20, 20);
     int read = loadProgressSave();
     
+    Celeste_P8_load_state(read);
+    
     while (running) { // You can always exit by double pressing home so \(°-°)/
         if (state.keyDown(Keyboard::Key::Home)) { running = false; }
         frameStartTime = eadk_timing_millis();
