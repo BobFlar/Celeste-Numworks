@@ -13,6 +13,7 @@ bool screenShake = true;
 bool pauseEmu = false;
 uint16_t emuBtnState = 0;
 uint16_t lastEmuBtnState = 0;
+extern VECI room;
 
 // Input related variables :
 EADK::Keyboard::State state = 0;
