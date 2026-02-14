@@ -310,7 +310,7 @@ static bool new_bg = false;
 static int frames, seconds;
 static short minutes; //this variable can overflow in normal gameplay (after +500 hours)
 static int deaths, max_djump;
-static bool start_game;
+bool start_game;
 static int start_game_flash;
 
 #ifdef CALCULATOR_SAVING
