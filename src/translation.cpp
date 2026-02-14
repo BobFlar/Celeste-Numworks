@@ -494,9 +494,9 @@ void checkAndSaveOnRoomChange() {
         if (gameState) {
             Celeste_P8_save_state(gameState);
             writeProgressSave();
-			if (!start_game) {
+			/*if (!start_game) {
                 OSDset("Salle Sauvegarde");
-			}
+			}*/
         }
         
         // Met à jour la dernière position connue
