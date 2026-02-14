@@ -492,11 +492,11 @@ void checkAndSaveOnRoomChange() {
         // Nouvelle salle détectée - sauvegarde
         gameState = gameState ? gameState : malloc(Celeste_P8_get_state_size());
         if (gameState) {
-            Celeste_P8_save_state(gameState);
-            writeProgressSave();
-			/*if (!start_game) {
+			if (!start_game) {
+                Celeste_P8_save_state(gameState);
+                writeProgressSave();
                 OSDset("Salle Sauvegarde");
-			}*/
+			}
         }
         
         // Met à jour la dernière position connue
