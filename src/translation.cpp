@@ -1,5 +1,4 @@
 #include "translation.hpp"
-#include "game/celeste.h"
 
 using namespace EADK;
 
@@ -483,24 +482,21 @@ static int last_room_x = -1;
 static int last_room_y = -1;
 
 void checkAndSaveOnRoomChange() {
-    // Récupère la position actuelle de la salle
-    int current_x = room.x;  // Accès à la variable globale room
-    int current_y = room.y;
+	if (start_game) {
+        int current_x = room.x;
+        int current_y = room.y;
     
-    // Détecte si on a changé de salle
-    if (current_x != last_room_x || current_y != last_room_y) {
-        // Nouvelle salle détectée - sauvegarde
-        gameState = gameState ? gameState : malloc(Celeste_P8_get_state_size());
-        if (gameState && start_game) {
-            Celeste_P8_save_state(gameState);
-            writeProgressSave();
-            OSDset("Salle Sauvegarde");
+        if (current_x != last_room_x || current_y != last_room_y) {
+            gameState = gameState ? gameState : malloc(Celeste_P8_get_state_size());
+            if (gameState) {
+                Celeste_P8_save_state(gameState);
+                writeProgressSave();
+                OSDset("Salle Sauvegarde");
+            }
+            last_room_x = current_x;
+            last_room_y = current_y;
         }
-        
-        // Met à jour la dernière position connue
-        last_room_x = current_x;
-        last_room_y = current_y;
-    }
+	}
 }
 
 void gameMain() {
@@ -518,7 +514,6 @@ void gameMain() {
 		emuRectFill(x - 1, y - 1, x + textWidth, y + textHeight, 0);
 		emuPrint("En pause", x, y, 7);
 	} else {
-
 		Celeste_P8_update();
 		checkAndSaveOnRoomChange();
 		Celeste_P8_draw();
