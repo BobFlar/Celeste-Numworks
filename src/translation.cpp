@@ -477,15 +477,22 @@ void emuInput() {
 void gameMain() {
 	lastEmuBtnState = emuBtnState;
 	emuBtnState = 0;
-
+	static bool firstRun = true; 
+	if (firstRun) {
+		if (gameState) {
+			Celeste_P8_load_state(gameState);
+			OSDset("Progress loaded");
+		}
+		firstRun = false;
+	}
 	emuInput();
-
+	
 	if (pauseEmu) {
 		const int x = pico8Size / 2 - 3 * 4, y = 8;
 
 		emuRectFill(x - 1, y - 1, 6 * 4 + x + 1, 6 + y + 1, 6);
 		emuRectFill(x, y, 6 * 4 + x, 6 + y, 0);
-		emuPrint("En pause", x + 1, y + 1, 7);
+		emuPrint("paused", x + 1, y + 1, 7);
 	} else {
 
 		Celeste_P8_update();
