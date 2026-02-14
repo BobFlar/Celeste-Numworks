@@ -20,8 +20,6 @@ bool running = true;
 uint64_t frameEndTime    = 0;
 uint64_t frameStartTime  = 0;
 
-void* gameState = NULL;
-
 int main(void) {
     // Clearing the screen first
     Display::pushRectUniform(Screen::Rect, 0x000000);
@@ -29,8 +27,6 @@ int main(void) {
 
     Point location = Point(20, 20);
     int read = loadProgressSave();
-    gameState = gameState ? gameState : malloc(Celeste_P8_get_state_size());
-    Celeste_P8_load_state(gameState);
     
     while (running) { // You can always exit by double pressing home so \(°-°)/
         if (state.keyDown(Keyboard::Key::Home)) { running = false; }
