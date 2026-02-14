@@ -1654,7 +1654,13 @@ static void load_room(int x, int y) {
 	has_dashed=false;
 	has_key=false;
 	room_just_loaded = true;
-
+    if (gameState) {
+	    is_not_title=true;
+		if (pauseEmu) { pauseEmu = false; }
+		 Celeste_P8_load_state(gameState);
+	} /*else {
+		OSDset("Nouvelle Sauvegarde"); 
+	 }*/
 	//int oldcount = 0;
 	//remove existing objects
 	for (int i = 0; i < MAX_OBJECTS; i++) {
