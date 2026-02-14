@@ -488,11 +488,14 @@ void gameMain() {
 	emuInput();
 	
 	if (pauseEmu) {
-		const int x = pico8Size / 2 - 3 * 4, y = 8;
+		const int textWidth = 8 * 4; 
+		const int textHeight = 6;
+		const int x = (pico8Size - textWidth) / 2;
+		const int y = 8;
 
-		emuRectFill(x - 1, y - 1, 6 * 4 + x + 1, 6 + y + 1, 6);
-		emuRectFill(x, y, 6 * 4 + x, 6 + y, 0);
-		emuPrint("En pause", x + 1, y + 1, 7);
+		emuRectFill(x - 2, y - 2, x + textWidth + 1, y + textHeight + 1, 6);
+		emuRectFill(x - 1, y - 1, x + textWidth, y + textHeight, 0);
+		emuPrint("En pause", x, y, 7);
 	} else {
 
 		Celeste_P8_update();
