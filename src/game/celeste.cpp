@@ -298,7 +298,7 @@ static int shake = 0;
 static bool will_restart = false;
 static int delay_restart = 0;
 static bool got_fruit[FRUIT_COUNT] = {false};
-static bool has_dashed = false;
+bool has_dashed = false;
 static int sfx_timer = 0;
 static bool has_key = false;
 static bool pause_player = false;
@@ -1787,8 +1787,9 @@ void Celeste_P8_update() {
 			start_game_flash-=1;
 			if (start_game_flash<=-30) {
 				begin_game();
-				/*if (gameState) {
+				if (gameState) {
 					is_not_title=true;
+					has_dashed=false;
 			        if (pauseEmu) { pauseEmu = false; }
 			        Celeste_P8_load_state(gameState);
 		        } /*else {
