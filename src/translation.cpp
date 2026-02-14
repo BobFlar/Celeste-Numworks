@@ -17,6 +17,7 @@ uint16_t lastEmuBtnState = 0;
 
 typedef struct {int x,y;} VECI;
 extern VECI room;
+extern bool start_game;
 
 // Input related variables :
 EADK::Keyboard::State state = 0;
@@ -493,7 +494,9 @@ void checkAndSaveOnRoomChange() {
         if (gameState) {
             Celeste_P8_save_state(gameState);
             writeProgressSave();
-            OSDset("Salle Sauvegarde");
+			if (!start_game) {
+                OSDset("Salle Sauvegarde");
+			}
         }
         
         // Met à jour la dernière position connue
