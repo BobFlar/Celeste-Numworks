@@ -481,7 +481,7 @@ void gameMain() {
 	if (firstRun) {
 		if (gameState) {
 			Celeste_P8_load_state(gameState);
-			OSDset("Progress loaded");
+			OSDset("Sauvegarde Restaure");
 		}
 		firstRun = false;
 	}
@@ -492,7 +492,7 @@ void gameMain() {
 
 		emuRectFill(x - 1, y - 1, 6 * 4 + x + 1, 6 + y + 1, 6);
 		emuRectFill(x, y, 6 * 4 + x, 6 + y, 0);
-		emuPrint("paused", x + 1, y + 1, 7);
+		emuPrint("En pause", x + 1, y + 1, 7);
 	} else {
 
 		Celeste_P8_update();
