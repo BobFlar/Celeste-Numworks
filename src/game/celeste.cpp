@@ -1785,11 +1785,10 @@ void Celeste_P8_update() {
 		if (start_game) {
 			start_game_flash-=1;
 			if (start_game_flash<=-30) {
-				/*
 				if (gameState) {
 			        if (pauseEmu) { pauseEmu = false; }
 			        Celeste_P8_load_state(gameState);
-		        } else {
+		        } /*else {
 					OSDset("Nouvelle Sauvegarde"); 
 			    }*/
 				begin_game();
@@ -1919,9 +1918,9 @@ void Celeste_P8_draw() {
    
 	// credits
 	if (is_title()) {
-        P8print("OK+BACK",50,82,5);
-        P8print("Nohan",42,90,5);
-        P8print("Fils de pute",46,98,5);
+        P8print("OK+BACK",50,80,5);
+        P8print("Nohan",42,96,5);
+        P8print("Fils de pute",46,102,5);
     }
 
    
