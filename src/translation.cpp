@@ -1,4 +1,5 @@
 #include "translation.hpp"
+#include "celeste.h"
 
 using namespace EADK;
 
