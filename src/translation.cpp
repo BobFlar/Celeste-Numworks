@@ -482,21 +482,20 @@ static int last_room_x = -1;
 static int last_room_y = -1;
 
 void checkAndSaveOnRoomChange() {
-	if (is_not_title) {
-        int current_x = room.x;
-        int current_y = room.y;
-    
-        if (current_x != last_room_x || current_y != last_room_y) {
-            gameState = gameState ? gameState : malloc(Celeste_P8_get_state_size());
-            if (gameState) {
+    int current_x = room.x;
+    int current_y = room.y;
+    if (current_x != last_room_x || current_y != last_room_y) {
+        gameState = gameState ? gameState : malloc(Celeste_P8_get_state_size());
+        if (gameState) {
+            if (is_not_title) {
                 Celeste_P8_save_state(gameState);
                 writeProgressSave();
                 OSDset("Salle Sauvegarde");
             }
-            last_room_x = current_x;
-            last_room_y = current_y;
         }
-	}
+        last_room_x = current_x;
+        last_room_y = current_y;
+    }
 }
 
 void gameMain() {
