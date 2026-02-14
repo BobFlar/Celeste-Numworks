@@ -508,16 +508,6 @@ void checkAndSaveOnRoomChange() {
 void gameMain() {
 	lastEmuBtnState = emuBtnState;
 	emuBtnState = 0;
-	/*
-	static bool firstRun = true; 
-	if (firstRun) {
-		if (gameState) {
-			Celeste_P8_load_state(gameState);
-			OSDset("Sauvegarde Restaure");
-		}
-		firstRun = false;
-	}
-	*/
 	emuInput();
 	
 	if (pauseEmu) {
