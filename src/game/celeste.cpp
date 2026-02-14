@@ -1918,9 +1918,9 @@ void Celeste_P8_draw() {
    
 	// credits
 	if (is_title()) {
-        P8print("OK+BACK",      50, 82, 5);
-        P8print("Nohan",        42, 90, 5);
-        P8print("Fils de pute", 46, 98, 5);
+        P8print("OK+BACK",50,82,5);
+        P8print("Nohan",42,90,5);
+        P8print("Fils de pute",46,98,5);
     }
 
    
