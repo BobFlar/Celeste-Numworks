@@ -287,7 +287,7 @@ static inline bool solid_at(float x,float y,float w,float h) { return solid_at(i
 typedef struct {float x,y;} VEC;
 typedef struct {int x,y;} VECI;
 
-static VECI room = {.x=0,.y=0};
+VECI room = {.x=0,.y=0};
 //static int num_objects = 0;
 static int freeze = 0;
 static int shake = 0;
