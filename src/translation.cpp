@@ -1,5 +1,5 @@
 #include "translation.hpp"
-#include "celeste.h"
+#include "game/celeste.h"
 
 using namespace EADK;
 
