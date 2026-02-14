@@ -16,7 +16,7 @@ uint16_t lastEmuBtnState = 0;
 
 typedef struct {int x,y;} VECI;
 extern VECI room;
-extern bool start_game;
+extern bool is_not_title;
 
 // Input related variables :
 EADK::Keyboard::State state = 0;
@@ -482,7 +482,7 @@ static int last_room_x = -1;
 static int last_room_y = -1;
 
 void checkAndSaveOnRoomChange() {
-	if (start_game) {
+	if (is_not_title) {
         int current_x = room.x;
         int current_y = room.y;
     
