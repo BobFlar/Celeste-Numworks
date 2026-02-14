@@ -505,6 +505,7 @@ void checkAndSaveOnRoomChange() {
 void gameMain() {
 	lastEmuBtnState = emuBtnState;
 	emuBtnState = 0;
+	/*
 	static bool firstRun = true; 
 	if (firstRun) {
 		if (gameState) {
@@ -513,6 +514,7 @@ void gameMain() {
 		}
 		firstRun = false;
 	}
+	*/
 	emuInput();
 	
 	if (pauseEmu) {
