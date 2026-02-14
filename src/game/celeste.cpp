@@ -311,6 +311,7 @@ static int frames, seconds;
 static short minutes; //this variable can overflow in normal gameplay (after +500 hours)
 static int deaths, max_djump;
 bool start_game;
+bool is_not_title;
 static int start_game_flash;
 
 #ifdef CALCULATOR_SAVING
@@ -1786,6 +1787,7 @@ void Celeste_P8_update() {
 			start_game_flash-=1;
 			if (start_game_flash<=-30) {
 				if (gameState) {
+					is_not_title=true;
 			        if (pauseEmu) { pauseEmu = false; }
 			        Celeste_P8_load_state(gameState);
 		        } /*else {
