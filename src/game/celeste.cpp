@@ -1777,25 +1777,14 @@ void Celeste_P8_update() {
 	// start game
 	if (is_title()) {
 		if (!start_game && (P8btn(k_jump) || P8btn(k_dash))) {
-			if (gameState) {
-			    if (pauseEmu) { pauseEmu = false; }
-			    Celeste_P8_load_state(gameState);
-		    } else {
-				//OSDset("Nouvelle Sauvegarde"); 
-			    P8music(-1, 0, 0);
-			    start_game_flash=50;
-			    start_game=true;
-			    P8sfx(38);
-			}
-			/*P8music(-1, 0, 0);
+			P8music(-1, 0, 0);
 			start_game_flash=50;
 			start_game=true;
-			P8sfx(38);*/
+			P8sfx(38);
 		}
 		if (start_game) {
 			start_game_flash-=1;
 			if (start_game_flash<=-30) {
-				/*
 				if (gameState) {
 			        if (pauseEmu) { pauseEmu = false; }
 			        Celeste_P8_load_state(gameState);
