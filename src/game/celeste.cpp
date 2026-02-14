@@ -29,6 +29,7 @@
 #include <climits>
 
 extern void* gameState;
+extern bool pauseEmu;
 
 struct _fix32 {
 	int32_t n;
