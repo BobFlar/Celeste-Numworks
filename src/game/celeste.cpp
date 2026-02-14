@@ -1921,8 +1921,8 @@ void Celeste_P8_draw() {
 	// credits
 	if (is_title()) {
         P8print("OK+BACK",50,80,5);
-        P8print("Nohan",42,88,5);
-        P8print("Fils de pute",46,96,5);
+        P8print("Nohan",51,88,5);
+        P8print("Fils de pute",37,96,5);
     }
 
    
