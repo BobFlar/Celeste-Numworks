@@ -507,12 +507,10 @@ void gameMain() {
 	emuBtnState = 0;
 	emuInput();
 
-	if (gameState && is_not_title) {
+	/*if (gameState && is_not_title) {
 		if (pauseEmu) { pauseEmu = false; }
 		 Celeste_P8_load_state(gameState);
-	} else {
-		OSDset("Nouvelle Sauvegarde"); 
-	 }
+	}*/
 	
 	if (pauseEmu) {
 		const int textWidth = 8 * 4; 
