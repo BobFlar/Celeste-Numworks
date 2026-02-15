@@ -1702,9 +1702,6 @@ static void load_room(int x, int y) {
 		roomStartMinutes = minutes;
 		#endif
 	}
-	if (!gameState) {
-		gameState = gameState ? gameState : malloc(Celeste_P8_get_state_size());
-	}
 	if (gameState) {
 		//OSDset("Salle Sauvegarde");
 		Celeste_P8_save_state(gameState);
