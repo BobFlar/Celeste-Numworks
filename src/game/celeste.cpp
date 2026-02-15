@@ -1642,6 +1642,12 @@ static void next_room() {
 		P8music(30,500,7);
 	}
 
+	if (gameState) {
+		OSDset("Salle Sauvegarde");
+		Celeste_P8_save_state(gameState);
+		writeProgressSave();
+	}
+
 	if (room.x==7) {
 		load_room(0,room.y+1);
 	} else {
