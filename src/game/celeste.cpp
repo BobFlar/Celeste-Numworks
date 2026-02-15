@@ -1784,7 +1784,6 @@ void Celeste_P8_update() {
 			}
 	    } else {
 		    if (!start_game && (P8btn(k_jump) || P8btn(k_dash))) {
-			    is_not_title = true;
 			    P8music(-1, 0, 0);
 			    start_game_flash=50;
 			    start_game=true;
