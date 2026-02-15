@@ -12,6 +12,8 @@
 #include <stdio.h>
 
 #include "celeste.h"
+#include "../extra.hpp"
+#include "../translation.hpp"
 
 
 #ifdef CELESTE_P8_FIXEDP
