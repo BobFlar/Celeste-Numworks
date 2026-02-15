@@ -1702,8 +1702,11 @@ static void load_room(int x, int y) {
 		roomStartMinutes = minutes;
 		#endif
 	}
+	if (!gameState) {
+		gameState = gameState ? gameState : malloc(Celeste_P8_get_state_size());
+	}
 	if (gameState) {
-		OSDset("Salle Sauvegarde");
+		//OSDset("Salle Sauvegarde");
 		Celeste_P8_save_state(gameState);
 		writeProgressSave();
 	}
@@ -1927,7 +1930,7 @@ void Celeste_P8_draw() {
    
 	// credits
 	if (is_title()) {
-        P8print("BACK",52,80,5);
+        P8print("BACK",53,80,5);
         P8print("Nohan",52,88,5);
         P8print("Fils de pute",39,96,5);
     }
