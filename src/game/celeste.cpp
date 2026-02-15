@@ -1649,11 +1649,6 @@ static void next_room() {
 	} else {
 		load_room(room.x+1,room.y);
 	}
-	if (gameState) {
-		OSDset("Salle Sauvegarde");
-		Celeste_P8_save_state(gameState);
-		writeProgressSave();
-	}
 }
 
 static bool room_just_loaded = false; //for debugging loading jank
@@ -1706,6 +1701,11 @@ static void load_room(int x, int y) {
 		roomStartFrames = frames, roomStartSeconds = seconds;
 		roomStartMinutes = minutes;
 		#endif
+	}
+	if (gameState) {
+		OSDset("Salle Sauvegarde");
+		Celeste_P8_save_state(gameState);
+		writeProgressSave();
 	}
 }
 
@@ -1785,12 +1785,12 @@ void Celeste_P8_update() {
 	// start game
 	if (is_title()) {
 		if (gameState) {
-			if (!start_game && (P8btn(k_dash))) {
+			if (!start_game && (P8btn(k_jump))) {
 	    	    if (pauseEmu) { pauseEmu = false; }
 		         Celeste_P8_load_state(gameState);
 			}
 	    } else {
-		    if (!start_game && (P8btn(k_dash))) {
+		    if (!start_game && (P8btn(k_jump))) {
 			    P8music(-1, 0, 0);
 			    start_game_flash=50;
 			    start_game=true;
