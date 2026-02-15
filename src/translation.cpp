@@ -187,7 +187,7 @@ static int getTileFlag(int tile, int flag) {
 // On-screen display (for info, such as loading a state, toggling screenshake, etc)
 static char osdText[200] = "";
 static int osdTimer = 0;
-static void OSDset(const char* fmt, ...) {
+void OSDset(const char* fmt, ...) {
 	va_list ap;
 	va_start(ap, fmt);
 	vsnprintf(osdText, sizeof osdText, fmt, ap);
