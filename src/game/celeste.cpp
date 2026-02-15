@@ -1777,19 +1777,26 @@ void Celeste_P8_update() {
    
 	// start game
 	if (is_title()) {
-		if (!start_game && (P8btn(k_jump) || P8btn(k_dash))) {
-			is_not_title = true;
-			P8music(-1, 0, 0);
-			start_game_flash=50;
-			start_game=true;
-			P8sfx(38);
-		}
-		if (start_game) {
-			start_game_flash-=1;
-			if (start_game_flash<=-30) {
-				begin_game();
+		if (gameState) {
+			if (!start_game && (P8btn(k_jump) || P8btn(k_dash))) {
+	    	    if (pauseEmu) { pauseEmu = false; }
+		         Celeste_P8_load_state(gameState);
 			}
-		}
+	    } else {
+		    if (!start_game && (P8btn(k_jump) || P8btn(k_dash))) {
+			    is_not_title = true;
+			    P8music(-1, 0, 0);
+			    start_game_flash=50;
+			    start_game=true;
+			    P8sfx(38);
+		    }
+		    if (start_game) {
+			    start_game_flash-=1;
+			    if (start_game_flash<=-30) {
+				    begin_game();
+			    }
+		    }
+	    }
 	}
 }
 
