@@ -449,7 +449,6 @@ void emuInput() {
 		gameState = gameState ? gameState : malloc(Celeste_P8_get_state_size());
 		if (gameState) {
 			OSDset("Sauvegarde Enregistre");
-			//has_dashed=false;
 			Celeste_P8_save_state(gameState);
 			writeProgressSave();
 		}
@@ -460,7 +459,6 @@ void emuInput() {
 		if (gameState) {
 			OSDset("Sauvegarde Restaure");
 			if (pauseEmu) { pauseEmu = false; }
-	        //has_dashed=false;
 			Celeste_P8_load_state(gameState);
 		} else { OSDset("Aucune Sauvegarde"); }
 	}
@@ -481,36 +479,10 @@ void emuInput() {
 	if (state.keyDown(Keyboard::Key::OK)) emuBtnState |= (1<<5);
 }
 
-static int last_room_x = -1;
-static int last_room_y = -1;
-
-void checkAndSaveOnRoomChange() {
-    int current_x = room.x;
-    int current_y = room.y;
-    if (current_x != last_room_x || current_y != last_room_y) {
-        gameState = gameState ? gameState : malloc(Celeste_P8_get_state_size());
-        if (gameState) {
-            if (is_not_title) {
-				//has_dashed=false;
-                Celeste_P8_save_state(gameState);
-                writeProgressSave();
-                OSDset("Salle Sauvegarde");
-            }
-        }
-        last_room_x = current_x;
-        last_room_y = current_y;
-    }
-}
-
 void gameMain() {
 	lastEmuBtnState = emuBtnState;
 	emuBtnState = 0;
 	emuInput();
-
-	/*if (gameState && is_not_title) {
-		if (pauseEmu) { pauseEmu = false; }
-		 Celeste_P8_load_state(gameState);
-	}*/
 	
 	if (pauseEmu) {
 		const int textWidth = 8 * 4; 
@@ -523,7 +495,6 @@ void gameMain() {
 		emuPrint("En pause", x, y, 7);
 	} else {
 		Celeste_P8_update();
-		//checkAndSaveOnRoomChange();
 		Celeste_P8_draw();
 	}
 	OSDdraw();
