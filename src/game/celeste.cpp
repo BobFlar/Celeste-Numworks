@@ -388,6 +388,9 @@ void Celeste_P8_init() { //identifiers beginning with underscores are reserved i
 	PRELUDE();
 
 	title_screen();
+
+    if (!gameState) gameState = malloc(Celeste_P8_get_state_size());
+	if (gameState) Celeste_P8_save_state(gameState);
 }
 
 static void title_screen() {
