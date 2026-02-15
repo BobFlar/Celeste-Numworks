@@ -523,7 +523,7 @@ void gameMain() {
 		emuPrint("En pause", x, y, 7);
 	} else {
 		Celeste_P8_update();
-		checkAndSaveOnRoomChange();
+		//checkAndSaveOnRoomChange();
 		Celeste_P8_draw();
 	}
 	OSDdraw();
