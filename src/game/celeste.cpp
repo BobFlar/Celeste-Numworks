@@ -304,6 +304,7 @@ static bool has_key = false;
 static bool pause_player = false;
 static bool flash_bg = false;
 static int music_timer = 0;
+bool is_not_title = false;
 
 //these are originally implicit globals defined in title_screen()
 static bool new_bg = false;
@@ -311,7 +312,6 @@ static int frames, seconds;
 static short minutes; //this variable can overflow in normal gameplay (after +500 hours)
 static int deaths, max_djump;
 bool start_game;
-bool is_not_title;
 static int start_game_flash;
 
 #ifdef CALCULATOR_SAVING
@@ -1654,13 +1654,7 @@ static void load_room(int x, int y) {
 	has_dashed=false;
 	has_key=false;
 	room_just_loaded = true;
-    if (gameState) {
-	    is_not_title=true;
-		if (pauseEmu) { pauseEmu = false; }
-		 Celeste_P8_load_state(gameState);
-	} /*else {
-		OSDset("Nouvelle Sauvegarde"); 
-	 }*/
+    
 	//int oldcount = 0;
 	//remove existing objects
 	for (int i = 0; i < MAX_OBJECTS; i++) {
@@ -1784,6 +1778,7 @@ void Celeste_P8_update() {
 	// start game
 	if (is_title()) {
 		if (!start_game && (P8btn(k_jump) || P8btn(k_dash))) {
+			is_not_title = true;
 			P8music(-1, 0, 0);
 			start_game_flash=50;
 			start_game=true;
