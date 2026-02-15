@@ -1644,16 +1644,15 @@ static void next_room() {
 		P8music(30,500,7);
 	}
 
-	if (gameState) {
-		OSDset("Salle Sauvegarde");
-		Celeste_P8_save_state(gameState);
-		writeProgressSave();
-	}
-
 	if (room.x==7) {
 		load_room(0,room.y+1);
 	} else {
 		load_room(room.x+1,room.y);
+	}
+	if (gameState) {
+		OSDset("Salle Sauvegarde");
+		Celeste_P8_save_state(gameState);
+		writeProgressSave();
 	}
 }
 
@@ -1786,12 +1785,12 @@ void Celeste_P8_update() {
 	// start game
 	if (is_title()) {
 		if (gameState) {
-			if (!start_game && (P8btn(k_jump) || P8btn(k_dash))) {
+			if (!start_game && (P8btn(k_dash))) {
 	    	    if (pauseEmu) { pauseEmu = false; }
 		         Celeste_P8_load_state(gameState);
 			}
 	    } else {
-		    if (!start_game && (P8btn(k_jump) || P8btn(k_dash))) {
+		    if (!start_game && (P8btn(k_dash))) {
 			    P8music(-1, 0, 0);
 			    start_game_flash=50;
 			    start_game=true;
@@ -1928,7 +1927,7 @@ void Celeste_P8_draw() {
    
 	// credits
 	if (is_title()) {
-        P8print("OK+BACK",50,80,5);
+        P8print("BACK",52,80,5);
         P8print("Nohan",52,88,5);
         P8print("Fils de pute",39,96,5);
     }
