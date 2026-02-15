@@ -46,3 +46,5 @@ void emuInit();
 void emuShutDown();
 
 void gameMain();
+
+void OSDset(const char* fmt, ...);
