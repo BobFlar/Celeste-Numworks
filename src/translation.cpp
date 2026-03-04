@@ -1,5 +1,4 @@
 #include "translation.hpp"
-#include <storage/record.h>
 
 using namespace EADK;
 
@@ -441,7 +440,8 @@ void emuInput() {
 			OSDset("Reinitialisation");
 			pauseEmu = false;
 
-			Ion::Storage::FileSystem::sharedFileSystem()->destroyRecordWithFullName("celeste.sav");
+			eadk_storage_record_t rec = eadk_storage_record("celeste");
+            eadk_storage_record_destroy(rec);
 			
 			gameInit();
 		}
