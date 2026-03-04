@@ -1,5 +1,4 @@
 #include "translation.hpp"
-#include "eadk/eadk.h"
 
 using namespace EADK;
 
@@ -441,10 +440,7 @@ void emuInput() {
 			OSDset("Reinitialisation");
 			pauseEmu = false;
 
-			eadk_storage_record_t rec = eadk_storage_record("celeste");
-            if (eadk_storage_record_is_null(rec) == false) {
-                eadk_storage_record_destroy(rec);
-            }
+			if (gameState) { free(gameState); gameState = NULL; }
 			
 			gameInit();
 		}
