@@ -439,7 +439,9 @@ void emuInput() {
 			
 			OSDset("Reinitialisation");
 			pauseEmu = false;
-
+            if (extapp_fileExists("CelesteP8.sav")) {
+                extapp_fileErase("CelesteP8.sav");
+            }
 			if (gameState) { free(gameState); gameState = NULL; }
 			
 			gameInit();
